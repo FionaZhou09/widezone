@@ -145,7 +145,7 @@ export function TodoItem({
         )}
 
         {/* Actions */}
-        <div className="flex shrink-0 items-center gap-0.5">
+        <div className="flex shrink-0 items-center gap-1 sm:gap-0.5">
           {editing ? (
             <>
               <button
@@ -172,7 +172,7 @@ export function TodoItem({
                 onClick={() => fileInputRef.current?.click()}
                 disabled={isDisabled}
                 aria-label="Attach image"
-                className="flex h-7 w-7 items-center justify-center rounded-[8px] text-slate-950/35 opacity-0 transition-all duration-150 group-hover:opacity-100 hover:bg-white/80 hover:text-[#EE5C2A] disabled:opacity-40"
+                className="flex h-7 w-7 items-center justify-center rounded-[8px] text-slate-950/35 opacity-100 transition-all duration-150 hover:bg-white/80 hover:text-[#EE5C2A] disabled:opacity-40 sm:opacity-0 sm:group-hover:opacity-100"
               >
                 {uploading ? (
                   <Loader2 className="h-3.5 w-3.5 animate-spin" />
@@ -193,7 +193,7 @@ export function TodoItem({
                 onClick={handleShare}
                 disabled={isDisabled}
                 aria-label="Share to Eazo"
-                className="flex h-7 w-7 items-center justify-center rounded-[8px] text-slate-950/35 opacity-0 transition-all duration-150 group-hover:opacity-100 hover:bg-white/80 hover:text-[#EE5C2A] disabled:opacity-40"
+                className="flex h-7 w-7 items-center justify-center rounded-[8px] text-slate-950/35 opacity-100 transition-all duration-150 hover:bg-white/80 hover:text-[#EE5C2A] disabled:opacity-40 sm:opacity-0 sm:group-hover:opacity-100"
               >
                 {sharing ? (
                   <Loader2 className="h-3.5 w-3.5 animate-spin" />
@@ -206,7 +206,7 @@ export function TodoItem({
                 onClick={() => { setDraft(todo.title); setEditing(true); }}
                 disabled={isDisabled}
                 aria-label="Edit"
-                className="flex h-7 w-7 items-center justify-center rounded-[8px] text-slate-950/35 opacity-0 transition-all duration-150 group-hover:opacity-100 hover:bg-white/80 hover:text-slate-950/72"
+                className="flex h-7 w-7 items-center justify-center rounded-[8px] text-slate-950/35 opacity-100 transition-all duration-150 hover:bg-white/80 hover:text-slate-950/72 sm:opacity-0 sm:group-hover:opacity-100"
               >
                 <Pencil className="h-3.5 w-3.5" />
               </button>
@@ -214,7 +214,7 @@ export function TodoItem({
                 onClick={handleDelete}
                 disabled={isDisabled}
                 aria-label="Delete"
-                className="flex h-7 w-7 items-center justify-center rounded-[8px] text-slate-950/35 opacity-0 transition-all duration-150 group-hover:opacity-100 hover:bg-red-50 hover:text-red-500"
+                className="flex h-7 w-7 items-center justify-center rounded-[8px] text-slate-950/35 opacity-100 transition-all duration-150 hover:bg-red-50 hover:text-red-500 sm:opacity-0 sm:group-hover:opacity-100"
               >
                 {busy ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Trash2 className="h-3.5 w-3.5" />}
               </button>
