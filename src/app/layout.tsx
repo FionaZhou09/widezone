@@ -16,13 +16,6 @@ export const metadata: Metadata = {
   },
 };
 
-// Mobile-first viewport.
-// - viewportFit: "cover" lets the page render edge-to-edge under the native
-//   status bar / home indicator in plain mobile Safari and inside Eazo Mobile.
-// - We intentionally do NOT set maximumScale / userScalable=false; pinch-zoom is
-//   kept available for accessibility. The "tap input → page zooms in" behaviour
-//   is fixed at the CSS layer (globals.css) by enforcing font-size >= 16px on
-//   form controls below the sm breakpoint.
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -34,10 +27,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const appId = process.env.EAZO_APP_ID;
   return (
     <html lang="en" className={cn("h-full antialiased", "font-sans", geist.variable)}>
       <body className="min-h-full flex flex-col">
-        <EazoProvider>
+        <EazoProvider appId={appId}>
           <UserSyncEffect />
           {children}
           <Toaster />

@@ -4,11 +4,7 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  // Whitelist LAN / device-on-Wi-Fi origins so HMR works when the template is
-  // opened from a phone or from the Eazo Mobile WebView. Next 15+ blocks
-  // cross-origin dev resources by default; we widen it to the local subnets
-  // most laptops hand out (192.168.*, 10.*, 172.16-31.*) plus localhost.
-  // Production builds are unaffected (this only governs `next dev`).
+  // RFC1918 LAN ranges + localhost for `next dev` HMR over Wi-Fi.
   allowedDevOrigins: [
     "localhost",
     "127.0.0.1",

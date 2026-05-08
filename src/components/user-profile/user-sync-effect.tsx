@@ -5,15 +5,11 @@ import { auth } from "@eazo/sdk";
 import { useEazo } from "@eazo/sdk/react";
 
 /**
- * Syncs the authenticated user to the local DB after a successful login,
- * by calling GET /api/user/profile — the same endpoint the Web path uses.
- *
- * - Web path: SDK calls /api/user/profile during bootstrap to fetch the user,
- *   which already triggers the upsert there.
- * - Mobile path: auth bootstraps from the bridge hello message and never calls
- *   /api/user/profile automatically, so this effect fires it once after login.
- *
- * Mount this once inside <EazoProvider> (already done in layout.tsx).
+ * Mobile-only: hits /api/user/profile once after login to upsert the user
+ * into the local DB. Web doesn't need this — the SDK already calls the same
+ * endpoint during web bootstrap; mobile bootstraps from the bridge `hello`
+ * instead and never auto-fetches profile, so the upsert has to be triggered
+ * manually here.
  */
 export function UserSyncEffect() {
   const authenticated = useEazo((s) => s.auth.authenticated);

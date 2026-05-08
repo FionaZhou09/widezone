@@ -54,16 +54,9 @@ body {
   touch-action: manipulation;
 }
 
-/*
- * iOS Safari / WKWebView auto-zooms into a focused form control when its
- * computed font-size is < 16px. That ruins the layout inside Eazo Mobile and
- * in mobile Safari alike. Force a 16px minimum on narrow viewports only —
- * desktop keeps the designed smaller sizes (e.g. text-sm 14px).
- *
- * `!important` is required because Tailwind utility classes (text-sm,
- * text-[15px], etc.) are class selectors and outrank the type-selector rule
- * here on specificity. `@media` does not raise specificity.
- */
+/* Prevent iOS WKWebView focus auto-zoom on form controls below the sm breakpoint.
+ * `!important` is required: Tailwind utility classes (text-sm, text-[15px]) outrank
+ * type selectors on specificity, and `@media` doesn't change that. */
 @media (max-width: 640px) {
   input,
   textarea,

@@ -8,24 +8,7 @@ import { useEazo } from "@eazo/sdk/react";
 
 import { request } from "@/lib/api/request";
 
-/**
- * Two-control bar shown above the todo list:
- *
- *  1. Subscribe toggle — drives the per-(user, app) push-subscription bit
- *     via the SDK. Inside Eazo Mobile this maps to an RPC the host fulfils
- *     by toggling `apps_user.flags & APP_FLAG_SUBSCRIBED_PUSH`. In a plain
- *     browser there's no host, so the SDK reports `subscribed: false` and
- *     toggles silently no-op; we surface that state with a hint instead of
- *     an active toggle.
- *
- *  2. "Send test" button — fires `POST /api/notifications/test`, which
- *     calls `notifications.publish(...)` from `@eazo/sdk/server`. The
- *     platform fans out to every subscriber, so this only delivers a
- *     visible push to the current device when that device's user is
- *     subscribed (i.e. the toggle above is ON inside Eazo Mobile).
- *
- * The whole bar is hidden until auth resolves, so first-paint stays clean.
- */
+/** Subscribe toggle + "Send test" button shown above the todo list. */
 export function NotificationsToggle() {
   const user = useEazo((s) => s.auth.user);
   const platform = useEazo((s) => s.device.platform);
@@ -86,9 +69,6 @@ export function NotificationsToggle() {
     if (sending) return;
     setSending(true);
     try {
-      // Sanity check — the `request()` helper inlines the SDK's session
-      // header silently. If it's null we'd send the request unauthenticated
-      // and get back a confusing 401, so surface the cause early.
       const sessionHeader = await auth.getSessionHeader();
       if (!sessionHeader) {
         toast.error(
@@ -187,11 +167,6 @@ export function NotificationsToggle() {
           )}
         </button>
       </div>
-      {/* Test publish — always visible when signed in. Calls the server route
-          which fans out to every subscriber of this app; the current device
-          only receives a visible push if (a) it's running inside Eazo Mobile
-          AND (b) the subscribe toggle above is ON. The toast distinguishes
-          the two outcomes so developers can verify the pipeline from web. */}
       <button
         onClick={handleSendTest}
         disabled={sending}
