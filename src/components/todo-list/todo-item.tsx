@@ -90,8 +90,16 @@ export function TodoItem({
       const text = todo.completed
         ? `Just finished: ${todo.title}`
         : `Working on: ${todo.title}`;
-      const images = todo.attachmentUrl ? [todo.attachmentUrl] : undefined;
-      const { accepted } = await share.compose({ text, images });
+      const attachments = todo.attachmentUrl
+        ? [
+            {
+              type: "image" as const,
+              url: todo.attachmentUrl,
+              caption: "todo attachment",
+            },
+          ]
+        : undefined;
+      const { accepted } = await share.compose({ text, attachments });
       if (accepted) toast.success("Opened in Eazo");
     } catch (err) {
       const message = err instanceof Error ? err.message : "Share failed";
