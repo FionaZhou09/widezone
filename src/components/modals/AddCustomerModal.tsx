@@ -5,6 +5,7 @@ import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { request } from "@/lib/api/request";
 import { toast } from "sonner";
+import { memory } from "@eazo/sdk";
 
 type AddCustomerModalProps = {
   onClose: () => void;
