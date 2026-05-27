@@ -55,6 +55,12 @@ export function AddCustomerModal({ onClose, onSuccess }: AddCustomerModalProps) 
         method: "POST",
         body: JSON.stringify(formData),
       });
+      memory.reportAction({
+        content: `User created new customer: ${formData.businessName} (${formData.state})`,
+        event_type: "create",
+        page: "customers",
+        metadata: { type: "create_customer", customer_id: newCustomer.id, business_name: formData.businessName },
+      }).catch(() => {});
       toast.success("客户已添加 / Customer added");
       onSuccess(newCustomer);
     } catch (error) {
