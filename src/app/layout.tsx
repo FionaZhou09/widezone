@@ -1,12 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { Geist } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { EazoProvider } from "@eazo/sdk/react";
 import { cn } from "@/utils/utils";
 import { Toaster } from "@/components/ui/sonner";
 import { UserSyncEffect } from "@/components/user-profile/user-sync-effect";
+import { MobileTabBar, DesktopSidebar } from "@/components/navigation";
 
-const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-body" });
+const plusJakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-heading" });
 
 // Public origin used to resolve relative URLs in OG / Twitter Card tags
 // and `canonical`. Picks up Vercel's auto-injected hostname; on other
