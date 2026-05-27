@@ -6,6 +6,7 @@ import { request } from "@/lib/api/request";
 import { ArrowLeft, Save } from "lucide-react";
 import { motion } from "framer-motion";
 import { memory } from "@eazo/sdk";
+import { toast } from "sonner";
 
 type Customer = {
   id: number;
