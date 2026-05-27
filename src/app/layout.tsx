@@ -10,50 +10,36 @@ import { MobileTabBar, DesktopSidebar } from "@/components/navigation";
 const inter = Inter({ subsets: ["latin"], variable: "--font-body" });
 const plusJakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-heading" });
 
-// Public origin used to resolve relative URLs in OG / Twitter Card tags
-// and `canonical`. Picks up Vercel's auto-injected hostname; on other
-// hosts (or when using a custom domain whose OG should not show the
-// `*.vercel.app` URL), point `metadataBase` at the canonical URL
-// directly instead of relying on this.
 const SITE_URL = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : undefined;
 
-const SITE_TITLE = "Eazo Developer Home";
-const SITE_DESCRIPTION =
-  "Developer onboarding, secure session flow, and backend verification examples.";
-
 export const metadata: Metadata = {
   ...(SITE_URL ? { metadataBase: new URL(SITE_URL) } : {}),
-  title: SITE_TITLE,
-  description: SITE_DESCRIPTION,
+  title: "广隆源食品 CRM / Wide Zone Food CRM",
+  description: "Internal sales CRM for Wide Zone Food to track pipeline stages, custom restaurant pricing, and real-time team collaboration.",
   icons: {
     icon: "https://eazo.ai/favicon.ico",
   },
-  // Social preview cards (Open Graph + Twitter). Most platforms (X,
-  // Facebook, LinkedIn, Slack, Discord, WeChat, iMessage) read these
-  // tags directly. For the preview image, drop a 1200×630 PNG/JPG at
-  // `src/app/opengraph-image.png` — Next.js auto-detects file-based
-  // metadata and overrides `openGraph.images` below at build time.
   openGraph: {
     type: "website",
-    siteName: "Eazo",
-    title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
-    url: "/",
-    locale: "en_US",
+    siteName: "Wide Zone Food CRM",
+    title: "广隆源食品 CRM / Wide Zone Food CRM",
+    description: "Internal sales CRM for Wide Zone Food to track pipeline stages, custom restaurant pricing, and real-time team collaboration.",
   },
   twitter: {
     card: "summary_large_image",
-    title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
+    title: "广隆源食品 CRM / Wide Zone Food CRM",
+    description: "Internal sales CRM for Wide Zone Food to track pipeline stages, custom restaurant pricing, and real-time team collaboration.",
   },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  viewportFit: "cover",
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: "#2E5A35",
 };
 
 export default function RootLayout({
@@ -62,11 +48,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("h-full antialiased", "font-sans", geist.variable)}>
-      <body className="min-h-full flex flex-col">
+    <html lang="en" className={cn("h-full antialiased", inter.variable, plusJakarta.variable)}>
+      <body className="min-h-svh flex flex-col bg-[#F5F7F5]">
         <EazoProvider>
           <UserSyncEffect />
-          {children}
+          <div className="flex flex-1">
+            <DesktopSidebar />
+            <main className="flex-1 md:ml-64 pb-16 md:pb-0">
+              {children}
+            </main>
+          </div>
+          <MobileTabBar />
           <Toaster />
         </EazoProvider>
       </body>
