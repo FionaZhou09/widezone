@@ -82,6 +82,12 @@ export function CustomerDetailScreen({ customerId }: { customerId: string }) {
         method: "PATCH",
         body: JSON.stringify({ status: newStatus }),
       });
+      memory.reportAction({
+        content: `User updated pipeline stage for ${customer.businessName} to: ${newStatus}`,
+        event_type: "update",
+        page: "customer-detail",
+        metadata: { type: "update_pipeline", customer_id: customer.id, new_stage: newStatus },
+      }).catch(() => {});
       setCustomer({ ...customer, pipelineStatus: newStatus });
       toast.success("阶段已更新 / Stage updated");
     } catch (error) {
