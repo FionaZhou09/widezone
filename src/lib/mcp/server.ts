@@ -1,14 +1,22 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { list_customers } from "./tools/list-customers";
+import { get_customer_profile } from "./tools/get-customer-profile";
+import { log_customer_activity } from "./tools/log-customer-activity";
+import { update_customer_pipeline } from "./tools/update-customer-pipeline";
+import { list_products } from "./tools/list-products";
 
 export function buildMcpServer(_userId: string): McpServer {
   const server = new McpServer({
-    name: "eazo-mcp",
+    name: "wide-zone-crm",
     version: "1.0.0",
   });
 
-  // Register your tools here. See AGENTS.md § 8 for the pattern:
-  //   import { registerMyTool } from "./tools/my-tool";
-  //   registerMyTool(server, _userId);
+  // Register CRM tools
+  server.tool(list_customers.name, list_customers.description, list_customers.inputSchema, list_customers.handler);
+  server.tool(get_customer_profile.name, get_customer_profile.description, get_customer_profile.inputSchema, get_customer_profile.handler);
+  server.tool(log_customer_activity.name, log_customer_activity.description, log_customer_activity.inputSchema, log_customer_activity.handler);
+  server.tool(update_customer_pipeline.name, update_customer_pipeline.description, update_customer_pipeline.inputSchema, update_customer_pipeline.handler);
+  server.tool(list_products.name, list_products.description, list_products.inputSchema, list_products.handler);
 
   return server;
 }
