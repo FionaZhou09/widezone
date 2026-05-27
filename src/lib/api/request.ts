@@ -1,21 +1,28 @@
 import { auth } from "@eazo/sdk";
 
 /**
- * Drop-in replacement for `fetch` that automatically injects `x-eazo-session`.
- * The SDK resolves the current session header from either the host bridge
- * (Eazo Mobile) or localStorage (web).
+ * Drop-in replacement for `fetch` that automatically injects `x-eazo-session`
+ * and parses JSON responses.
  */
-export async function request(
+export async function request<T = any>(
   input: RequestInfo | URL,
   init: RequestInit = {},
-): Promise<Response> {
+): Promise<T> {
   const sessionHeader = await auth.getSessionHeader();
 
-  return fetch(input, {
+  const response = await fetch(input, {
     ...init,
     headers: {
+      "Content-Type": "application/json",
       ...init.headers,
       ...(sessionHeader ? { "x-eazo-session": sessionHeader } : {}),
     },
   });
+
+  if (!response.ok) {
+    const error = await response.json().catch(() => ({ error: "Request failed" }));
+    throw new Error(error.error || `Request failed with status ${response.status}`);
+  }
+
+  return response.json();
 }
