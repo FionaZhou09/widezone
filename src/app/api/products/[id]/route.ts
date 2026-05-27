@@ -22,7 +22,7 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
     return NextResponse.json(updated[0]);
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json({ error: error.errors }, { status: 400 });
+      return NextResponse.json({ error: error.issues }, { status: 400 });
     }
     console.error("Failed to update product price:", error);
     return NextResponse.json({ error: "Failed to update product price" }, { status: 500 });
