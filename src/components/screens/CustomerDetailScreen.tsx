@@ -105,6 +105,12 @@ export function CustomerDetailScreen({ customerId }: { customerId: string }) {
         method: "POST",
         body: JSON.stringify({ note: newLogNote }),
       });
+      memory.reportAction({
+        content: `User added activity log for ${customer?.businessName}: "${newLogNote}"`,
+        event_type: "create",
+        page: "customer-detail",
+        metadata: { type: "add_activity_log", customer_id: parseInt(customerId), log_id: newLog.id },
+      }).catch(() => {});
       setLogs([newLog, ...logs]);
       setNewLogNote("");
       toast.success("记录已添加 / Log added");
