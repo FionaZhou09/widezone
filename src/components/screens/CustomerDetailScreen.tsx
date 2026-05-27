@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { request } from "@/lib/api/request";
 import { ArrowLeft, Save } from "lucide-react";
 import { motion } from "framer-motion";
-import { toast } from "sonner";
+import { memory } from "@eazo/sdk";
 
 type Customer = {
   id: number;
