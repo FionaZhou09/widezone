@@ -1,11 +1,5 @@
-import { CatalogScreen } from "@/components/screens/CatalogScreen";
-import { AuthInit } from "@/components/user-profile/auth-init";
+import { CatalogPage } from "@/components/catalog";
 
-export default function CatalogPage() {
-  return (
-    <>
-      <AuthInit />
-      <CatalogScreen />
-    </>
-  );
+export default function CatalogRoute() {
+  return <CatalogPage />;
 }

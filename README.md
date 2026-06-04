@@ -1,48 +1,47 @@
-A minimal Next.js starter for building apps inside the [Eazo](https://eazo.ai) platform. Includes a working example of the Eazo session token flow: the app requests the encrypted user token from the host via `postMessage`, sends it to a Next.js API route, decrypts it server-side with `@eazo/node-sdk`, and returns the user profile.
+# Wide Zone Food
+
+Wide Zone Food is a bilingual wholesale food catalog and internal sales CRM built for the Eazo platform. Public buyers can browse products in Chinese or English, build an RFQ, and submit it to the sales team.
+
+## Features
+
+- Modern public catalog with Chinese and English modes
+- Search and category filtering across 100+ products
+- RFQ basket with quantities and customer contact form
+- Internal RFQ email notifications through Resend
+- Customer CRM, pipeline tracking, dashboard, and MCP tools
+- Eazo authentication, notifications, and mobile WebView support
 
 ## Getting Started
 
-Install dependencies with Bun:
-
 ```bash
 bun install
-```
-
-If dependency installation stalls on this machine during `sharp` setup, use:
-
-```bash
-SHARP_IGNORE_GLOBAL_LIBVIPS=1 bun install
-```
-
-Then start the development server:
-
-```bash
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000/catalog](http://localhost:3000/catalog) for the public catalog.
 
-## Environment Variables
-
-Copy `.env.example` to `.env` and fill in your private key:
+## Verification
 
 ```bash
-cp .env.example .env
+bun run lint
+bun run build
 ```
+
+## Configuration
+
+Copy `.env.example` to `.env` and configure the services you use.
 
 | Variable | Description |
 |---|---|
-| `EAZO_PRIVATE_KEY` | Your Eazo developer private key (hex, 64 chars). Used server-side to decrypt the user session token. |
+| `EAZO_APP_ID` | Eazo application ID |
+| `EAZO_PRIVATE_KEY` | Server-side Eazo private key |
+| `DATABASE_URL` | PostgreSQL connection string |
+| `RESEND_API_KEY` | Resend API key for real RFQ email delivery |
+| `RFQ_FROM_EMAIL` | Verified RFQ sender address |
+| `RFQ_SALES_EMAIL` | Internal sales recipient, defaults to `fiona.zhou@widezones.com` |
 
-You can generate a keypair in the Eazo developer settings. Never expose the private key to the browser.
+Without Eazo or database variables, local development uses a demo user and empty dashboard data. Without `RESEND_API_KEY`, RFQ submissions are logged locally instead of sending email.
 
-## Learn More
+## Source Materials
 
-- [Eazo Documentation](https://docs.eazo.ai)
-- [Next.js Documentation](https://nextjs.org/docs)
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Original catalog source files are archived under `docs/source/`. Application catalog data lives in `src/data/widezone-products.json`.

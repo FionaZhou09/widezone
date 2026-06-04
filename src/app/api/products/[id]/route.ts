@@ -8,7 +8,7 @@ const updatePriceSchema = z.object({
 });
 
 export async function PATCH(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
-  const result = requireAuth(request);
+  const result = await requireAuth(request);
   if (!result.ok) return result.response;
 
   const { id } = await params;

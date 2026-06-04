@@ -3,7 +3,7 @@ import { requireAuth } from "@/lib/auth";
 import { getAllProducts } from "@/lib/db/queries";
 
 export async function GET(request: NextRequest) {
-  const result = requireAuth(request);
+  const result = await requireAuth(request);
   if (!result.ok) return result.response;
 
   try {

@@ -19,7 +19,7 @@ const createCustomerSchema = z.object({
 });
 
 export async function GET(request: NextRequest) {
-  const result = requireAuth(request);
+  const result = await requireAuth(request);
   if (!result.ok) return result.response;
 
   try {
@@ -40,7 +40,7 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  const result = requireAuth(request);
+  const result = await requireAuth(request);
   if (!result.ok) return result.response;
   const { id: userId } = result.user;
 

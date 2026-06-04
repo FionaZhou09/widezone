@@ -101,6 +101,9 @@ web_modules/
 # Optional npm cache directory
 .npm
 
+# This repository is Bun-first; keep bun.lock as the only package-manager lockfile.
+package-lock.json
+
 # Optional eslint cache
 .eslintcache
 

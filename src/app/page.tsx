@@ -1,11 +1,5 @@
-import { DashboardScreen } from "@/components/screens/DashboardScreen";
-import { AuthInit } from "@/components/user-profile/auth-init";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return (
-    <>
-      <AuthInit />
-      <DashboardScreen />
-    </>
-  );
+  redirect("/about");
 }

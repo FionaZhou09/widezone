@@ -8,7 +8,13 @@ export async function request<T = any>(
   input: RequestInfo | URL,
   init: RequestInit = {},
 ): Promise<T> {
-  const sessionHeader = await auth.getSessionHeader();
+  let sessionHeader: string | null | undefined;
+  try {
+    sessionHeader = await auth.getSessionHeader();
+  } catch {
+    // Local dev outside Eazo host: no session header available.
+    sessionHeader = undefined;
+  }
 
   const response = await fetch(input, {
     ...init,

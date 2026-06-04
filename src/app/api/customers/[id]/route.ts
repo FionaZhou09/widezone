@@ -21,7 +21,7 @@ const updateCustomerSchema = z.object({
 });
 
 export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
-  const result = requireAuth(request);
+  const result = await requireAuth(request);
   if (!result.ok) return result.response;
 
   const { id } = await params;
@@ -40,7 +40,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
 }
 
 export async function PATCH(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
-  const result = requireAuth(request);
+  const result = await requireAuth(request);
   if (!result.ok) return result.response;
 
   const { id } = await params;
@@ -62,7 +62,7 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
 }
 
 export async function DELETE(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
-  const result = requireAuth(request);
+  const result = await requireAuth(request);
   if (!result.ok) return result.response;
 
   const { id } = await params;

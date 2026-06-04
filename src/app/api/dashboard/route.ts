@@ -6,8 +6,30 @@ import { customers } from "@/lib/db/schema";
 import { sql } from "drizzle-orm";
 
 export async function GET(request: NextRequest) {
-  const result = requireAuth(request);
+  const result = await requireAuth(request);
   if (!result.ok) return result.response;
+
+  // Local no-DB mode: let the UI render with empty stats.
+  if (!process.env.DATABASE_URL) {
+    return NextResponse.json({
+      totalCustomers: 0,
+      activePipeline: 0,
+      wonThisMonth: 0,
+      lostThisMonth: 0,
+      needsFollowUp: 0,
+      pipelineStats: {
+        potential: 0,
+        contacted: 0,
+        negotiating: 0,
+        won: 0,
+        lost: 0,
+      },
+      byState: {},
+      byBusinessType: {},
+      needsFollowUpList: [],
+      localMode: true,
+    });
+  }
 
   try {
     const allCustomers = await getAllCustomers();

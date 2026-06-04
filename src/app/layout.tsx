@@ -5,7 +5,7 @@ import { EazoProvider } from "@eazo/sdk/react";
 import { cn } from "@/utils/utils";
 import { Toaster } from "@/components/ui/sonner";
 import { UserSyncEffect } from "@/components/user-profile/user-sync-effect";
-import { MobileTabBar, DesktopSidebar } from "@/components/navigation";
+import { AppShell } from "@/components/app-shell";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-body" });
 const plusJakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-heading" });
@@ -42,6 +42,9 @@ export const viewport: Viewport = {
   themeColor: "#2E5A35",
 };
 
+const eazoAppId = process.env.EAZO_APP_ID;
+const isEazoHosted = !!eazoAppId;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -50,17 +53,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("h-full antialiased", inter.variable, plusJakarta.variable)}>
       <body className="min-h-svh flex flex-col bg-[#F5F7F5]">
-        <EazoProvider>
-          <UserSyncEffect />
-          <div className="flex flex-1">
-            <DesktopSidebar />
-            <main className="flex-1 md:ml-64 pb-16 md:pb-0">
-              {children}
-            </main>
-          </div>
-          <MobileTabBar />
-          <Toaster />
-        </EazoProvider>
+        {isEazoHosted ? (
+          <EazoProvider>
+            <UserSyncEffect />
+            <AppShell>{children}</AppShell>
+            <Toaster />
+          </EazoProvider>
+        ) : (
+          <>
+            <AppShell>{children}</AppShell>
+            <Toaster />
+          </>
+        )}
       </body>
     </html>
   );

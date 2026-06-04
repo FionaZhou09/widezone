@@ -105,3 +105,200 @@
     min-height: 100svh;
   }
 }
+
+.catalog-theme {
+  --catalog-forest: #083726;
+  --catalog-green: #177245;
+  --catalog-lime: #b8e986;
+  --catalog-mint: #e9f6ed;
+  --catalog-cream: #f7faf7;
+  --catalog-muted: #688074;
+  --catalog-border: #d9e7dd;
+}
+
+.catalog-pattern {
+  position: relative;
+  overflow: hidden;
+}
+
+.catalog-pattern::before {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 85% 20%, rgba(184, 233, 134, 0.12), transparent 28%),
+    radial-gradient(circle at 15% 90%, rgba(68, 164, 108, 0.14), transparent 32%);
+  content: "";
+  pointer-events: none;
+}
+
+.catalog-tab,
+.catalog-tab-active {
+  border: 1px solid var(--catalog-border);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  color: var(--catalog-muted);
+  background: white;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  transition: background-color 150ms, border-color 150ms, color 150ms;
+}
+
+.catalog-tab:hover,
+.catalog-tab-active {
+  border-color: var(--catalog-green);
+  background: var(--catalog-green);
+  color: white;
+}
+
+.catalog-section {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: catalog-fade-up 500ms ease forwards;
+}
+
+.catalog-rfq-input {
+  width: 100%;
+  border: 1px solid var(--catalog-border);
+  background: white;
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.75rem;
+  color: var(--catalog-forest);
+  font-size: 0.75rem;
+  outline: none;
+}
+
+.catalog-rfq-input:focus {
+  border-color: var(--catalog-green);
+  box-shadow: 0 0 0 3px var(--catalog-mint);
+}
+
+.catalog-stat-card {
+  display: flex;
+  min-height: 9rem;
+  flex-direction: column;
+  justify-content: flex-end;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 1rem;
+  backdrop-filter: blur(12px);
+}
+
+.catalog-stat-card svg {
+  margin-bottom: auto;
+  width: 1rem;
+  color: var(--catalog-lime);
+}
+
+.catalog-stat-card strong {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.catalog-stat-card span {
+  margin-top: 0.5rem;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 0.65rem;
+  line-height: 1.5;
+}
+
+.catalog-facility-visual {
+  position: relative;
+  min-height: 24rem;
+  overflow: hidden;
+  border-radius: 2rem;
+  background: #dbece1;
+  box-shadow: 0 28px 70px rgba(8, 55, 38, 0.16);
+}
+
+.catalog-facility-sky {
+  position: absolute;
+  inset: 0 0 40%;
+  background: radial-gradient(circle at 80% 20%, #fff9cf 0 5%, transparent 6%), linear-gradient(160deg, #dff2e6, #f7faf7);
+}
+
+.catalog-facility-building {
+  position: absolute;
+  bottom: 22%;
+  left: 9%;
+  right: 7%;
+  height: 45%;
+  border-top: 10px solid var(--catalog-green);
+  background: linear-gradient(150deg, #f9fcfa, #d7e5dc);
+  box-shadow: 0 22px 35px rgba(8, 55, 38, 0.18);
+  transform: skewY(-2deg);
+}
+
+.catalog-facility-building span {
+  position: absolute;
+  left: 7%;
+  top: 14%;
+  color: var(--catalog-forest);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+}
+
+.catalog-facility-building i {
+  position: relative;
+  top: 52%;
+  display: inline-block;
+  width: 20%;
+  height: 38%;
+  margin-left: 8%;
+  border: 5px solid white;
+  background: #78958a;
+}
+
+.catalog-facility-road {
+  position: absolute;
+  inset: 76% -10% -30%;
+  background: #a4b7ad;
+  transform: rotate(-4deg);
+}
+
+.catalog-facility-label {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  display: flex;
+  max-width: calc(100% - 2.5rem);
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  background: rgba(8, 55, 38, 0.92);
+  padding: 0.85rem 1rem;
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+.catalog-facility-label span {
+  color: var(--catalog-lime);
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.catalog-facility-label strong {
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  padding-left: 1rem;
+  font-size: 0.65rem;
+  line-height: 1.5;
+}
+
+@keyframes catalog-fade-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .catalog-section {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
