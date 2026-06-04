@@ -1,46 +1,61 @@
 # Wide Zone Food
 
-Wide Zone Food is a bilingual wholesale food catalog and internal sales CRM built for the Eazo platform. Public buyers can browse products in Chinese or English, build an RFQ, and submit it to the sales team.
+Wide Zone Food is a bilingual (中文 / English) wholesale food catalog with an online RFQ (request for quote) flow. Buyers browse products by category, build an RFQ basket, and submit it to the sales team by email.
 
 ## Features
 
-- Modern public catalog with Chinese and English modes
+- Public catalog with Chinese and English modes
 - Search and category filtering across 100+ products
-- RFQ basket with quantities and customer contact form
-- Internal RFQ email notifications through Resend
-- Customer CRM, pipeline tracking, dashboard, and MCP tools
-- Eazo authentication, notifications, and mobile WebView support
+- RFQ basket with quantities and a customer contact form
+- RFQ email delivery through Resend (logs locally when no API key is set)
+- Static, database-free architecture — product data lives in JSON
 
 ## Getting Started
 
 ```bash
-bun install
-bun dev
+npm install
+npm run dev
 ```
 
-Open [http://localhost:3000/catalog](http://localhost:3000/catalog) for the public catalog.
+Open [http://localhost:3000](http://localhost:3000) — the home route redirects to `/catalog`.
 
 ## Verification
 
 ```bash
-bun run lint
-bun run build
+npm run lint
+npm run build
 ```
 
 ## Configuration
 
-Copy `.env.example` to `.env` and configure the services you use.
+Copy `.env.example` to `.env` and set the RFQ email variables you need.
 
 | Variable | Description |
 |---|---|
-| `EAZO_APP_ID` | Eazo application ID |
-| `EAZO_PRIVATE_KEY` | Server-side Eazo private key |
-| `DATABASE_URL` | PostgreSQL connection string |
-| `RESEND_API_KEY` | Resend API key for real RFQ email delivery |
+| `RESEND_API_KEY` | Resend API key for real RFQ email delivery (optional locally) |
 | `RFQ_FROM_EMAIL` | Verified RFQ sender address |
 | `RFQ_SALES_EMAIL` | Internal sales recipient, defaults to `fiona.zhou@widezones.com` |
 
-Without Eazo or database variables, local development uses a demo user and empty dashboard data. Without `RESEND_API_KEY`, RFQ submissions are logged locally instead of sending email.
+## Project Structure
+
+```
+src/
+├── app/                 # Next.js App Router routes
+│   ├── about/           # Company / about page
+│   ├── catalog/         # Product catalog (home redirects here)
+│   ├── contact/         # Contact page
+│   ├── api/rfq/         # RFQ submission endpoint
+│   └── layout.tsx
+├── components/
+│   ├── about/           # About page sections
+│   ├── catalog/         # Catalog, filters, RFQ tray + form
+│   ├── contact/         # Contact page sections
+│   └── ui/              # Reusable UI primitives (shadcn / base-ui)
+├── data/                # Static catalog data (widezone-products.json)
+└── lib/
+    ├── rfq/             # RFQ schema, email rendering + delivery, client helper
+    └── utils.ts         # cn() class helper
+```
 
 ## Source Materials
 

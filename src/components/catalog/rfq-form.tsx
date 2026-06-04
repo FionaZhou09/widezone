@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { LoaderCircle } from "lucide-react";
-import { submitRfq } from "@/lib/api/rfq";
+import { submitRfq } from "@/lib/rfq/client";
 import type { RfqItem } from "./types";
 import { copy, type CatalogLocale } from "./i18n";
 
