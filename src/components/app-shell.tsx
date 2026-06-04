@@ -5,7 +5,7 @@ import { DesktopSidebar, MobileTabBar } from "@/components/navigation";
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const isPublicCatalog = pathname === "/catalog" || pathname === "/about";
+  const isPublicCatalog = pathname === "/catalog" || pathname === "/about" || pathname === "/contact";
 
   if (isPublicCatalog) {
     return <main className="min-h-svh">{children}</main>;

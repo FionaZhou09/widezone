@@ -68,6 +68,13 @@ export const copy = {
     productShowcaseTitle: "来自可信供应商的精选产品",
     productShowcaseBody: "以下实拍图片展示我们的部分肉类与海鲜供应能力。完整可供产品请查看产品目录。",
     viewCatalog: "查看产品目录",
+    contactEyebrow: "销售与合作咨询",
+    contactTitle: "让我们讨论您的采购需求",
+    contactBody: "无论您正在寻找稳定的产品供应、批发配送，还是长期合作方案，我们的销售团队都将为您提供专业支持。",
+    emailSales: "发送邮件给销售代表",
+    contactAddress: "总部及运营中心",
+    contactNext: "需要产品报价？",
+    contactNextBody: "浏览产品目录，选择所需产品并提交询价单，我们将根据数量及送货地区与您联系。",
   },
   en: {
     brand: "Wide Zone Food",
@@ -136,6 +143,13 @@ export const copy = {
     productShowcaseTitle: "Selected products from trusted suppliers",
     productShowcaseBody: "These authentic product images represent a selection of our meat and seafood supply capabilities. Explore the catalog for our complete offering.",
     viewCatalog: "View product catalog",
+    contactEyebrow: "Sales & partnership inquiries",
+    contactTitle: "Let’s discuss your supply needs",
+    contactBody: "Whether you need reliable product sourcing, wholesale distribution, or a long-term supply partnership, our sales team is ready to support your business.",
+    emailSales: "Email our sales representative",
+    contactAddress: "Headquarters & operations",
+    contactNext: "Need a product quote?",
+    contactNextBody: "Browse the catalog, select the products you need, and submit an RFQ. We will follow up based on quantity and delivery location.",
   },
 } as const;
 

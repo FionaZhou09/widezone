@@ -24,9 +24,9 @@ export function CatalogHeader({ locale, onLocaleChange }: { locale: CatalogLocal
               <button className={`rounded-full px-3 py-1.5 ${locale === "zh" ? "bg-[var(--catalog-lime)] text-[var(--catalog-forest)]" : "text-white/60"}`} onClick={() => onLocaleChange("zh")} type="button">中文</button>
               <button className={`rounded-full px-3 py-1.5 ${locale === "en" ? "bg-[var(--catalog-lime)] text-[var(--catalog-forest)]" : "text-white/60"}`} onClick={() => onLocaleChange("en")} type="button">English</button>
             </div>
-            <a aria-label={text.contactSales} className="hidden items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold transition-colors hover:bg-white/10 sm:flex" href="mailto:fiona.zhou@widezones.com">
+            <Link aria-label={text.contactSales} className="hidden items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold transition-colors hover:bg-white/10 sm:flex" href="/contact">
               <Mail className="size-3.5 text-[var(--catalog-lime)]" /> {text.contactSales}
-            </a>
+            </Link>
           </div>
         </nav>
 
@@ -49,9 +49,9 @@ export function CatalogHeader({ locale, onLocaleChange }: { locale: CatalogLocal
               <a className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-xs font-semibold text-white transition-colors hover:bg-white/10" href="#catalog-products">
                 {text.browse} <ArrowDown className="size-4" />
               </a>
-              <a className="inline-flex items-center rounded-full border border-white/20 px-5 py-3 text-xs font-semibold text-white transition-colors hover:bg-white/10" href="mailto:fiona.zhou@widezones.com">
+              <Link className="inline-flex items-center rounded-full border border-white/20 px-5 py-3 text-xs font-semibold text-white transition-colors hover:bg-white/10" href="/contact">
                 {text.contactTeam}
-              </a>
+              </Link>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-3">

@@ -15,7 +15,7 @@ export function AboutHeader({ locale, onLocaleChange }: { locale: CatalogLocale;
           <div className="flex items-center gap-3">
             <div className="hidden items-center gap-5 text-xs font-semibold text-white/65 md:flex">
               <span className="text-white">{text.navAbout}</span>
-              <a className="transition-colors hover:text-white" href="mailto:fiona.zhou@widezones.com">{text.contactSales}</a>
+              <Link className="transition-colors hover:text-white" href="/contact">{text.contactSales}</Link>
             </div>
             <Link className="rounded-full border border-white/15 bg-white/5 px-3 py-2 text-[10px] font-bold transition-colors hover:bg-white/10 sm:px-4 sm:text-xs" href="/catalog">{text.navCatalog}</Link>
             <div className="flex rounded-full border border-white/15 bg-white/5 p-1 text-[10px] font-bold">
@@ -31,7 +31,7 @@ export function AboutHeader({ locale, onLocaleChange }: { locale: CatalogLocale;
           <div className="mt-8 flex flex-wrap gap-3">
             <a className="inline-flex items-center rounded-full bg-[var(--catalog-lime)] px-5 py-3 text-xs font-bold text-[var(--catalog-forest)]" href="#about-company">{text.navAbout}</a>
             <Link className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-xs font-semibold transition-colors hover:bg-white/10" href="/catalog">{text.browse}<ArrowDown className="size-4" /></Link>
-            <a className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-xs font-semibold transition-colors hover:bg-white/10" href="mailto:fiona.zhou@widezones.com"><Mail className="size-4 text-[var(--catalog-lime)]" />{text.contactTeam}</a>
+            <Link className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-xs font-semibold transition-colors hover:bg-white/10" href="/contact"><Mail className="size-4 text-[var(--catalog-lime)]" />{text.contactTeam}</Link>
           </div>
         </div>
       </div>

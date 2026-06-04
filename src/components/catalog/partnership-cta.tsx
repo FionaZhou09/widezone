@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { copy, type CatalogLocale } from "./i18n";
 
@@ -10,7 +11,7 @@ export function PartnershipCta({ locale }: { locale: CatalogLocale }) {
         <p className="mt-5 max-w-2xl text-sm leading-7 text-[var(--catalog-muted)]">{text.readyBody}</p>
         <div className="mt-8 flex flex-wrap gap-3">
           <a className="inline-flex items-center gap-2 rounded-full bg-[var(--catalog-green)] px-5 py-3 text-xs font-bold text-white" href="/catalog#catalog-products">{text.startRfq}<ArrowUpRight className="size-4" /></a>
-          <a className="inline-flex items-center rounded-full border border-[var(--catalog-green)] px-5 py-3 text-xs font-bold text-[var(--catalog-green)]" href="mailto:fiona.zhou@widezones.com">Fiona Zhou · fiona.zhou@widezones.com</a>
+          <Link className="inline-flex items-center rounded-full border border-[var(--catalog-green)] px-5 py-3 text-xs font-bold text-[var(--catalog-green)]" href="/contact">{text.contactTeam}</Link>
         </div>
       </div>
     </section>
