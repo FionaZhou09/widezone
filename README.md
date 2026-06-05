@@ -2,6 +2,10 @@
 
 Wide Zone Food is a bilingual (中文 / English) wholesale food catalog with an online RFQ (request for quote) flow. Buyers browse products by category, build an RFQ basket, and submit it to the sales team by email.
 
+## Live Site
+
+- Production: [https://fionasale.netlify.app/about](https://fionasale.netlify.app/about)
+
 ## Features
 
 - Public catalog with Chinese and English modes
