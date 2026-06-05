@@ -30,6 +30,21 @@ test("RFQ rejects invalid customer email", () => {
   assert.equal(result.success, false);
 });
 
+test("RFQ accepts phone-only contact details", () => {
+  const result = rfqSchema.safeParse({ ...validRfq, email: "" });
+  assert.equal(result.success, true);
+});
+
+test("RFQ accepts email-only contact details", () => {
+  const result = rfqSchema.safeParse({ ...validRfq, phone: "" });
+  assert.equal(result.success, true);
+});
+
+test("RFQ requires at least one reply contact method", () => {
+  const result = rfqSchema.safeParse({ ...validRfq, email: "", phone: "" });
+  assert.equal(result.success, false);
+});
+
 test("RFQ email contains customer and selected product details", () => {
   const email = renderRfqEmail(validRfq);
   assert.match(email.subject, /Golden Hotpot/);

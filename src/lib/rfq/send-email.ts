@@ -16,20 +16,22 @@ export async function sendRfqEmail(rfq: RfqSubmission) {
     return { delivered: false, developmentMode: true };
   }
 
+  const payload = {
+    from: process.env.RFQ_FROM_EMAIL || "Wide Zone Food <onboarding@resend.dev>",
+    to: [SALES_EMAIL],
+    subject: email.subject,
+    html: email.html,
+    text: email.text,
+    ...(rfq.email ? { reply_to: rfq.email } : {}),
+  };
+
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${apiKey}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      from: process.env.RFQ_FROM_EMAIL || "Wide Zone Food <onboarding@resend.dev>",
-      to: [SALES_EMAIL],
-      reply_to: rfq.email,
-      subject: email.subject,
-      html: email.html,
-      text: email.text,
-    }),
+    body: JSON.stringify(payload),
   });
 
   if (!response.ok) {

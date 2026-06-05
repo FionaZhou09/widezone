@@ -9,6 +9,8 @@ function escapeHtml(value: string) {
 }
 
 export function renderRfqEmail(rfq: RfqSubmission) {
+  const email = rfq.email || "Not provided / 未提供";
+  const phone = rfq.phone || "Not provided / 未提供";
   const itemText = rfq.items
     .map((item, index) => `${index + 1}. ${item.nameZh} / ${item.nameEn} | ${item.unit || "N/A"} | ${item.quantity}`)
     .join("\n");
@@ -28,8 +30,8 @@ export function renderRfqEmail(rfq: RfqSubmission) {
 
 Business / 公司: ${rfq.businessName}
 Contact / 联系人: ${rfq.contactName}
-Email: ${rfq.email}
-Phone / 电话: ${rfq.phone}
+Email: ${email}
+Phone / WeChat / WhatsApp: ${phone}
 Delivery / 送货地点: ${rfq.location}
 
 Products / 产品:
@@ -45,8 +47,8 @@ ${rfq.notes || "None / 无"}`,
       <div style="padding:24px;background:#faf6f0">
         <p><strong>Business / 公司:</strong> ${escapeHtml(rfq.businessName)}</p>
         <p><strong>Contact / 联系人:</strong> ${escapeHtml(rfq.contactName)}</p>
-        <p><strong>Email:</strong> ${escapeHtml(rfq.email)}</p>
-        <p><strong>Phone / 电话:</strong> ${escapeHtml(rfq.phone)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+        <p><strong>Phone / WeChat / WhatsApp:</strong> ${escapeHtml(phone)}</p>
         <p><strong>Delivery / 送货地点:</strong> ${escapeHtml(rfq.location)}</p>
         <table style="width:100%;border-collapse:collapse;background:white;margin-top:20px">
           <thead><tr style="background:#c0392b;color:white"><th style="padding:10px;text-align:left">Product / 产品</th><th style="padding:10px;text-align:left">Unit</th><th style="padding:10px;text-align:left">Quantity / 数量</th></tr></thead>

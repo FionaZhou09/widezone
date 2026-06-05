@@ -52,8 +52,8 @@ export function RfqForm({
       <div className="grid grid-cols-2 gap-2">
         <input className="catalog-rfq-input" name="businessName" placeholder={text.business} required />
         <input className="catalog-rfq-input" name="contactName" placeholder={text.contact} required />
-        <input className="catalog-rfq-input" name="email" placeholder={text.email} required type="email" />
-        <input className="catalog-rfq-input" name="phone" placeholder={text.phone} required />
+        <input className="catalog-rfq-input" name="email" placeholder={text.email} type="email" />
+        <input className="catalog-rfq-input" name="phone" placeholder={text.phone} />
       </div>
       <input className="catalog-rfq-input" name="location" placeholder={text.location} required />
       <textarea className="catalog-rfq-input min-h-20 resize-y" name="notes" placeholder={text.notes} />
