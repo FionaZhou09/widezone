@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { renderRfqEmail } from "./email.ts";
-import { rfqSchema } from "./schema.ts";
+import { renderRfqEmail } from "./email";
+import { rfqSchema } from "./schema";
 
 const validRfq = {
   businessName: "Golden Hotpot",

@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { CatalogLocaleProvider } from "@/components/catalog/use-catalog-locale";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-body" });
 const plusJakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-heading" });
 
 const SITE_URL = process.env.VERCEL_URL
@@ -41,9 +41,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("h-full antialiased", inter.variable, plusJakarta.variable)}>
+    <html lang="en" className={cn("h-full antialiased", plusJakarta.variable)}>
       <body className="min-h-svh flex flex-col bg-[#F5F7F5]">
-        <main className="min-h-svh flex-1">{children}</main>
+        <CatalogLocaleProvider>
+          <main className="min-h-svh flex-1">{children}</main>
+        </CatalogLocaleProvider>
       </body>
     </html>
   );

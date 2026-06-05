@@ -18,9 +18,9 @@ export function AboutHeader({ locale, onLocaleChange }: { locale: CatalogLocale;
               <Link className="transition-colors hover:text-white" href="/contact">{text.contactSales}</Link>
             </div>
             <Link className="rounded-full border border-white/15 bg-white/5 px-3 py-2 text-[10px] font-bold transition-colors hover:bg-white/10 sm:px-4 sm:text-xs" href="/catalog">{text.navCatalog}</Link>
-            <div className="flex rounded-full border border-white/15 bg-white/5 p-1 text-[10px] font-bold">
-              <button className={`rounded-full px-3 py-1.5 ${locale === "zh" ? "bg-[var(--catalog-lime)] text-[var(--catalog-forest)]" : "text-white/60"}`} onClick={() => onLocaleChange("zh")} type="button">中文</button>
-              <button className={`rounded-full px-3 py-1.5 ${locale === "en" ? "bg-[var(--catalog-lime)] text-[var(--catalog-forest)]" : "text-white/60"}`} onClick={() => onLocaleChange("en")} type="button">English</button>
+            <div aria-label="Language" className="flex rounded-full border border-white/15 bg-white/5 p-1 text-[10px] font-bold" role="group">
+              <button aria-pressed={locale === "zh"} className={`min-h-11 rounded-full px-3 ${locale === "zh" ? "bg-[var(--catalog-lime)] text-[var(--catalog-forest)]" : "text-white/70"}`} onClick={() => onLocaleChange("zh")} type="button">中文</button>
+              <button aria-pressed={locale === "en"} className={`min-h-11 rounded-full px-3 ${locale === "en" ? "bg-[var(--catalog-lime)] text-[var(--catalog-forest)]" : "text-white/70"}`} onClick={() => onLocaleChange("en")} type="button">English</button>
             </div>
           </div>
         </nav>

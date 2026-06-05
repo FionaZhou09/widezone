@@ -59,4 +59,4 @@ src/
 
 ## Source Materials
 
-Original catalog source files are archived under `docs/source/`. Application catalog data lives in `src/data/widezone-products.json`.
+Original catalog source files and planning docs are archived under `backup/docs/`. Application catalog data lives in `src/data/widezone-products.json`.

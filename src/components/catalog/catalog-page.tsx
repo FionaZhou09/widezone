@@ -9,7 +9,8 @@ import { CategorySection } from "./category-section";
 import { RfqTray } from "./rfq-tray";
 import { PartnershipCta } from "./partnership-cta";
 import type { CatalogCategory, CatalogProduct, DisplayCategory, RfqItem } from "./types";
-import { copy, type CatalogLocale } from "./i18n";
+import { copy } from "./i18n";
+import { useCatalogLocale } from "./use-catalog-locale";
 
 const categories: DisplayCategory[] = (catalogData as CatalogCategory[]).map((category) => ({
   ...category,
@@ -22,7 +23,7 @@ export function CatalogPage() {
   const [rfqItems, setRfqItems] = useState<RfqItem[]>([]);
   const [rfqOpen, setRfqOpen] = useState(false);
   const [submitted, setSubmitted] = useState("");
-  const [locale, setLocale] = useState<CatalogLocale>("zh");
+  const [locale, setLocale] = useCatalogLocale();
   const text = copy[locale];
 
   const visibleCategories = useMemo(() => {
