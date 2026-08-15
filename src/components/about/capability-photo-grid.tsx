@@ -16,6 +16,12 @@ export function CapabilityPhotoGrid({ locale }: { locale: CatalogLocale }) {
           <Image alt={photo.alt} className="object-cover transition-transform duration-500 hover:scale-105" fill sizes="(max-width: 1024px) 50vw, 300px" src={photo.src} />
         </div>
       ))}
+      {/* Labels the grid for what it actually contains. Previously the only
+          caption here was the headquarters address, which read as though these
+          photographs showed the facility rather than product stock. */}
+      <div className="absolute left-5 top-5 rounded-full bg-[var(--catalog-forest)]/90 px-4 py-2 text-[9px] font-bold uppercase tracking-[0.22em] text-[var(--catalog-lime)] backdrop-blur">
+        {text.selectedProducts}
+      </div>
       <div className="absolute bottom-5 left-5 rounded-2xl border border-white/15 bg-[var(--catalog-forest)]/95 px-5 py-4 text-white shadow-xl backdrop-blur">
         <span className="text-[9px] font-bold uppercase tracking-[0.22em] text-[var(--catalog-lime)]">{text.headquarters}</span>
         <strong className="mt-2 block text-sm leading-6">2701 Simpson St<br />Monroe, NC 28110</strong>

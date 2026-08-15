@@ -5,7 +5,13 @@ import { copy, type CatalogLocale } from "@/components/catalog/i18n";
 export function AboutHeader({ locale, onLocaleChange }: { locale: CatalogLocale; onLocaleChange: (locale: CatalogLocale) => void }) {
   const text = copy[locale];
   return (
-    <header className="catalog-pattern bg-[var(--catalog-forest)] text-white">
+    <header
+      className="catalog-pattern relative bg-[var(--catalog-forest)] bg-cover bg-center text-white"
+      style={{ backgroundImage: "url('/brand/hero-texture.webp')" }}
+    >
+      {/* Keeps the header the same forest tone regardless of how the texture
+          renders, so heading contrast stays predictable. */}
+      <div aria-hidden="true" className="absolute inset-0 bg-[var(--catalog-forest)]/80" />
       <div className="relative z-10 mx-auto max-w-[1180px] px-5 pb-16 pt-5 sm:px-10 sm:pb-24">
         <nav className="flex items-center justify-between border-b border-white/10 pb-5">
           <Link className="flex items-center gap-3" href="/about">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
 import catalogData from "@/data/widezone-products.json";
 import { CatalogFilters } from "./catalog-filters";
 import { CatalogFooter } from "./catalog-footer";
@@ -88,9 +89,17 @@ export function CatalogPage() {
             />
           ))
         ) : (
-          <p className="py-16 text-center text-sm text-[var(--catalog-muted)]">
-            {text.noResults}
-          </p>
+          <div className="flex flex-col items-center py-16 text-center">
+            <Image
+              alt=""
+              aria-hidden="true"
+              className="rounded-2xl opacity-90"
+              height={180}
+              src="/brand/catalog-empty-state.webp"
+              width={180}
+            />
+            <p className="mt-6 text-sm text-[var(--catalog-muted)]">{text.noResults}</p>
+          </div>
         )}
       </main>
       <PartnershipCta locale={locale} />

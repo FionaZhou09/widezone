@@ -4,8 +4,14 @@ import { copy, type CatalogLocale } from "./i18n";
 export function DistributionNetwork({ locale }: { locale: CatalogLocale }) {
   const text = copy[locale];
   return (
-    <section className="bg-[var(--catalog-forest)] py-16 text-white sm:py-24">
-      <div className="mx-auto grid max-w-[1180px] gap-12 px-5 sm:px-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
+    <section className="relative overflow-hidden bg-[var(--catalog-forest)] py-16 text-white sm:py-24">
+      {/* Route motif sits behind the NY / NC / GA corridor it illustrates. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-cover bg-center opacity-30"
+        style={{ backgroundImage: "url('/brand/section-divider.webp')" }}
+      />
+      <div className="relative z-10 mx-auto grid max-w-[1180px] gap-12 px-5 sm:px-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
         <div>
           <span className="text-[10px] font-bold uppercase tracking-[0.24em] text-[var(--catalog-lime)]">{text.networkEyebrow}</span>
           <h2 className="mt-4 font-serif text-3xl font-bold leading-tight sm:text-5xl">{text.networkTitle}</h2>
