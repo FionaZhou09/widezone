@@ -1,7 +1,7 @@
 import { renderRfqEmail } from "./email";
 import type { RfqSubmission } from "./schema";
 
-const SALES_EMAIL = process.env.RFQ_SALES_EMAIL || "fiona.zhou@widezones.com";
+const SALES_EMAIL = process.env.RFQ_SALES_EMAIL || "info@widezones.com";
 
 export async function sendRfqEmail(rfq: RfqSubmission) {
   const apiKey = process.env.RESEND_API_KEY;

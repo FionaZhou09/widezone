@@ -38,7 +38,7 @@ Copy `.env.example` to `.env` and set the RFQ email variables you need.
 |---|---|
 | `RESEND_API_KEY` | Resend API key for real RFQ email delivery (optional locally) |
 | `RFQ_FROM_EMAIL` | Verified RFQ sender address |
-| `RFQ_SALES_EMAIL` | Internal sales recipient, defaults to `fiona.zhou@widezones.com` |
+| `RFQ_SALES_EMAIL` | Internal sales recipient, defaults to `info@widezones.com` |
 
 ## Project Structure
 
