@@ -47,7 +47,7 @@ export function ContactPage() {
                 {text.contactBody}
               </p>
               <div className="mt-9 flex flex-wrap gap-3">
-                <a className="contact-primary-button group" href="mailto:info@widezones.com">
+                <a className="contact-primary-button group" href="mailto:fiona.zhou@widezones.com">
                   <span>{text.emailSales}</span>
                   <span className="contact-button-orbit" aria-hidden="true">↗</span>
                 </a>
@@ -65,8 +65,8 @@ export function ContactPage() {
                   <div>
                     <span className="text-[10px] uppercase tracking-[0.22em] text-white/68">{text.contactSales}</span>
                     <strong className="mt-3 block text-2xl font-black text-white">Fiona Zhou</strong>
-                    <a className="mt-2 block text-sm text-white/62 transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-white" href="mailto:info@widezones.com">
-                      info@widezones.com
+                    <a className="mt-2 block text-sm text-white/62 transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-white" href="mailto:fiona.zhou@widezones.com">
+                      fiona.zhou@widezones.com
                     </a>
                   </div>
                   <div className="contact-hairline" />
@@ -93,7 +93,7 @@ export function ContactPage() {
               <div className="contact-mini-card">
                 <span>{text.contactSales}</span>
                 <strong>Fiona Zhou</strong>
-                <a href="mailto:info@widezones.com">info@widezones.com</a>
+                <a href="mailto:fiona.zhou@widezones.com">fiona.zhou@widezones.com</a>
               </div>
               <div className="contact-mini-card">
                 <span>{text.contactAddress}</span>
